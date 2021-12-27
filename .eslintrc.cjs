@@ -11,6 +11,7 @@ module.exports = {
   },
   plugins: ['@typescript-eslint'],
   rules: {
+    'array-callback-return': 'warn',
     'capitalized-comments': 'off',
     'no-redeclare': 'off',
     'no-unused-vars': 'off',
