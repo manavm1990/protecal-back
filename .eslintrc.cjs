@@ -13,6 +13,7 @@ module.exports = {
   rules: {
     'array-callback-return': 'warn',
     'capitalized-comments': 'off',
+    'new-cap': ['error', { capIsNewExceptions: 'Router' }],
     'no-redeclare': 'off',
     'no-unused-vars': 'off',
     '@typescript-eslint/no-redeclare': ['error'],
