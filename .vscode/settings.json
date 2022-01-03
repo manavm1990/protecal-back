@@ -20,5 +20,6 @@
   "javascript.inlayHints.parameterNames.enabled": "all",
   "javascript.validate.enable": false,
   "prettier.requireConfig": true,
-  "typescript.updateImportsOnFileMove.enabled": "always"
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "cSpell.words": ["protecal"]
 }
