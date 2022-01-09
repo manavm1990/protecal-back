@@ -11,7 +11,7 @@ const payloadBase = {
 
 export default {
   async create(newUser: User) {
-    const { document } = await got
+    const { document: existingUser } = await got
       .post(`${config.db.apiUrl}/findOne`, {
         headers,
         json: {
@@ -23,16 +23,19 @@ export default {
       })
       .json();
 
-    if (document) {
+    if (existingUser) {
       throw new Error('User already exists');
     }
+
+    // Don't bother with this until it's confirmed that the user is not in the database
+    const document = { ...newUser, password: await newUser.encryptPassword() };
 
     return got
       .post(`${config.db.apiUrl}/insertOne`, {
         headers,
         json: {
           ...payloadBase,
-          document: newUser,
+          document,
         },
       })
       .json();

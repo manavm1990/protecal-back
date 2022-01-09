@@ -1,4 +1,5 @@
 import { NewUserType } from '../types';
+import bcrypt from 'bcrypt';
 
 export default class User {
   public email: string;
@@ -11,6 +12,12 @@ export default class User {
     this.mobile = mobile || '';
     this.password = password;
     this.username = username;
+  }
+
+  public encryptPassword(): Promise<string> {
+    // Async preferred over sync hash to avoid server blocking
+    // https://www.npmjs.com/package/bcrypt
+    return bcrypt.hash(this.password, 10);
   }
 
   public validate(): string[] {
